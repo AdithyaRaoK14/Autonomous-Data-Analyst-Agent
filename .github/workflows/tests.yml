@@ -21,7 +21,9 @@ jobs:
           cache: "pip"
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          pip install -r requirements.txt
+          pip install pytest pytest-cov
 
       - name: Create required directories
         run: mkdir -p logs cache sandbox
