@@ -1,3 +1,4 @@
+![Tests](https://github.com/AdithyaRaoK14/Autonomous-Data-Analyst-Agent/actions/workflows/tests.yml/badge.svg)
 # 📊 Autonomous Data Analyst Agent
 
 An AI-powered autonomous data analysis system built using LangGraph, Streamlit, and Ollama-based local LLMs.
