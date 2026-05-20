@@ -201,7 +201,8 @@ data-analyst-agent/
 │
 ├── tests/
 │   ├── conftest.py
-│   └── test_agent.py
+│   ├── test_agent.py
+│   └── test_coverage_boost.py
 │
 ├── Screenshots/
 │   ├── UI Image1.png
@@ -242,9 +243,24 @@ data-analyst-agent/
 * Matplotlib
 * Seaborn
 
-## Testing
+# 🧪 Running Tests
 
-* Pytest
+Run all tests:
+```bash
+pytest tests/ -v
+```
+
+Run with coverage:
+```bash
+pytest tests/ --cov=agent --cov=sandbox --cov-report=term-missing
+```
+
+Run by category:
+```bash
+pytest tests/ -v -k "cache"
+pytest tests/ -v -k "retry"
+pytest tests/ -v -k "end_to_end"
+```
 
 ---
 
@@ -411,21 +427,6 @@ ollama serve
 streamlit run app.py
 ```
 
----
-
-# 🧪 Running Tests
-
-Run all tests:
-
-```bash
-pytest -v
-```
-
-Run specific test file:
-
-```bash
-pytest tests/test_agent.py -v
-```
 
 ---
 
@@ -445,31 +446,21 @@ docker run -p 8501:8501 data-analyst-agent
 
 ---
 
-# 📈 Future Improvements
 
-* Multi-file dataset analysis
-* SQL database support
-* RAG-enhanced dataset understanding
-* Persistent memory
-* Multi-agent collaboration
-* Plotly interactive dashboards
-* Automated EDA report export
-* GPU sandbox execution
-* Advanced ML pipeline generation
-
----
 
 # 🧪 Test Coverage
 
-The project includes tests for:
+92 tests · 86% coverage across agent and sandbox modules.
 
-* cache system
-* AST validation
-* secure execution
-* timeout handling
-* trace generation
-* logging
-* prompt generation
+- Cache system (set, get, expiry, invalidation, file-change detection)
+- AST validation and sandbox security
+- Secure execution (edge cases: empty DataFrames, null columns, timeouts)
+- LangGraph node unit tests (error handler, visual enforcer, plot tracker, routing)
+- Retry system verification (recovery injection, hard stop at 3 failures)
+- End-to-end graph integration tests with mocked LLM
+- Logger structured event writing and session filtering
+- Execution trace dataclass methods
+
 
 ---
 
